@@ -1,0 +1,46 @@
+name: Python CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest flake8 black mypy
+
+    - name: Linting with Flake8
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82,F83 --show-source --statistics
+        # Daha sıkı Flake8 kontrolleri için farklı parametreler de eklenebilir.
+
+    - name: Format code with Black
+      run: |
+        black . --check --diff
+
+    - name: Type check with MyPy
+      run: |
+        mypy .
+
+    - name: Run Pytest
+      run: |
+        pytest

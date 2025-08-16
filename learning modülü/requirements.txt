@@ -1,0 +1,15 @@
+pytest
+pytest-asyncio
+pytest-cov
+mock
+pyjwt
+aiohttp
+pydub
+nltk
+validators
+celery
+redis
+python-docx
+PyMuPDF
+SpeechRecognition
+transformers
