@@ -1,6 +1,9 @@
 name: Run Unit Tests
 
 on:
+ name: Run Unit Tests
+
+on:
   push:
     branches: [ main ]
   pull_request:
@@ -24,9 +27,7 @@ jobs:
       - name: Install PyPI dependencies
         run: |
           pip install --upgrade pip
-          # faiss hatasını önlemek için cpu versiyonu
           pip install faiss-cpu==1.7.4
-          # requirements.txt içindeki diğer paketler
           pip install -r requirements.txt --no-deps
 
       # 4️⃣ Testleri çalıştır
