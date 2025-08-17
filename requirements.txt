@@ -34,7 +34,7 @@ transformers==4.55.2
 validators==0.35.0
 whisper==1.1.10
 iniconfig==2.0.0
-attrs==24.0.0
+attrs==23.2.0
 tomli==2.0.1
 colorama==0.4.6
 py==1.11.0
